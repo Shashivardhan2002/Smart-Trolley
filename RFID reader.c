@@ -1,5 +1,4 @@
 #include <Arduino.h>
-#include < .h>
 #include <Wire.h>
 #include <string.h>
 LiquidCrystal_I2C lcd ( 0x27 , 16 , 2 ) ;
