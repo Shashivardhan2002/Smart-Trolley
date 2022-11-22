@@ -1,3 +1,4 @@
+#include <LiquidCrystal_I2C.h>
 #include <Arduino.h>
 #include <Wire.h>
 #include <string.h>
@@ -18,7 +19,7 @@ pinMode ( 6 , OUTPUT ) ;// GREEN LED
 // Initialization
 Serial.begin ( 9600 ) ;
 // lcd.begin ( ) ;
-lcd.begin( );
+lcd.init( );
 lcd.backlight ( ) ;
 lcd.setCursor ( 0 , 0 ) ;
 lcd.print ( " AUTOMATIC BILL " ) ;
@@ -67,49 +68,24 @@ if ( Serial.available ( ) )
   }
   if (input[0] == '2' && input[1] == '7' && input[2] == '0' && input[3] == '0'&&
     input[4] == '5' && input[5]=='9' && input[6] == '2' && input[7] == '0' &&
-    input[8] == '4' && input[9]=='B' && input[10] == '1' && input[11] == '5' )
+    input[8] == '4' && input[9]=='1' && input[10] == 'A' && input[11] == '6' )
   {
        if (buttonState == HIGH)
  {
    lcd.clear(); 
    lcd.setCursor ( 0 , 0 ) ;
-   lcd.print ( " Chocolate Added ");
+   lcd.print ( " Biscuit del ");
    lcd.setCursor ( 0 , 1 ) ;
-   lcd.print ("Price:20.00Rs");
+   lcd.print ("Price:2.00Rs");
    digitalWrite ( 4 , HIGH ) ;
    digitalWrite ( 5 , HIGH ) ;
    delay ( 1000 ) ;
-   total=total+20.00 ;
+   total=total-4.00 ;
    count_prod++;
    digitalWrite ( 4 , LOW ) ;
    digitalWrite ( 5 , LOW ) ;
   }
-  }
- if (input[0] == '2' && input[1] == '7' && input[2] == '0' && input[3] == '0'&&
-    input[4] == '5' && input [5]=='9' && input[6] == '8' && input[7] == '6' &&
-    input[8] == 'D' && input[9]=='5' && input[10] == '2' && input[11] == 'D' )
-  {
-       lcd.clear( );
-       lcd.print ( " total price is" ) ;
-       digitalWrite ( 6 ,HIGH ) ;
-       digitalWrite ( 5 ,HIGH ) ;
-       lcd.setCursor ( 1 , 3 ) ;
-       lcd.print (total) ;
-       delay(1000);
-       digitalWrite ( 5 ,LOW ) ;
-       delay (5000);
-       digitalWrite ( 6 ,LOW ) ;
-       
-       lcd.clear( );
-       lcd.setCursor ( 0 , 0 ) ;
-       lcd.print ( "THANKS FOR " ) ;
-       lcd.setCursor ( 0 , 1 );
-       lcd.print ( " VISITING " ) ;
-  
- } 
-    
- 
-  
+  }  
   // check if the pushbutton is pressed. If it is, the buttonState is HIGH:
  
     if (input[0] == '2' && input[1] == '7' && input[2] == '0' && input[3] == '0'&&
@@ -119,13 +95,13 @@ if ( Serial.available ( ) )
         if (buttonState == LOW)
   {
         lcd.setCursor ( 0 , 0 ) ;
-        lcd.print ( " Biscuit deleted ");
+        lcd.print ( " Choclate del");
         lcd.setCursor ( 0 , 1 ) ;
         lcd.print ("Price:4.00Rs");
         digitalWrite ( 4 , HIGH ) ;
         digitalWrite ( 5 , HIGH ) ;
         delay ( 1000 ) ;
-        total=total-4.00 ;
+        total=total-2.00 ;
         count_prod++ ;
         digitalWrite ( 4 , LOW ) ;
        digitalWrite ( 5 , LOW ) ;
@@ -139,27 +115,66 @@ if ( Serial.available ( ) )
      if (buttonState == LOW)
      {
    lcd.setCursor ( 0 , 0 ) ;
-   lcd.print ( " Chocolate deleted ");
+   lcd.print ( " Chocolate added ");
    lcd.setCursor ( 0 , 1 ) ;
-   lcd.print ("Price:20.00Rs");
+   lcd.print ("Price:2.00Rs");
    digitalWrite ( 4 , HIGH ) ;
    digitalWrite ( 5 , HIGH ) ;
    delay ( 1000 ) ;
-   total=total-20.00 ;
+   total=total+2.00 ;
    count_prod++;
    digitalWrite ( 4 , LOW ) ;
    digitalWrite ( 5 , LOW ) ;
   }
   }
-} 
-  
+ 
+     if (input[0] == '2' && input[1] == '7' && input[2] == '0' && input[3] == '0'&&
+    input[4] == 'F' && input[5]=='2' && input[6] == '8' && input[7] == '1' &&
+    input[8] == '8' && input[9]=='7' && input[10] == 'D' && input[11] == '3' )
+  {
+     if (buttonState == LOW)
+     {
+   lcd.setCursor ( 0 , 0 ) ;
+   lcd.print ( " Chips added ");
+   lcd.setCursor ( 0 , 1 ) ;
+   lcd.print ("Price:10.00Rs");
+   digitalWrite ( 4 , HIGH ) ;
+   digitalWrite ( 5 , HIGH ) ;
+   delay ( 1000 ) ;
+   total=total+10.00 ;
+   count_prod++;
+   digitalWrite ( 4 , LOW ) ;
+   digitalWrite ( 5 , LOW ) ;
+  }
+  }
+
+   if (input[0] == '2' && input[1] == '7' && input[2] == '0' && input[3] == '0'&&
+    input[4] == 'F' && input[5]=='2' && input[6] == '8' && input[7] == '6' &&
+    input[8] == '1' && input[9]=='8' && input[10] == '4' && input[11] == 'B' )
+  {
+     if (buttonState == LOW)
+     {
+   lcd.setCursor ( 0 , 0 ) ;
+   lcd.print ( " Chips del ");
+   lcd.setCursor ( 0 , 1 ) ;
+   lcd.print ("Price:10.00Rs");
+   digitalWrite ( 4 , HIGH ) ;
+   digitalWrite ( 5 , HIGH ) ;
+   delay ( 1000 ) ;
+   total=total-10.00 ;
+   count_prod++;
+   digitalWrite ( 4 , LOW ) ;
+   digitalWrite ( 5 , LOW ) ;
+  }
+  }
+}
   else
    {
     // turn LED off:
    // digitalWrite(ledPin, LOW);
   if(input[0] == '2' && input[1] == '7' && input[2] == '0' && input[3] == '0'&&
-    input[4] == '5' && input [5]=='9' && input[6] == '8' && input[7] == '6' &&
-    input[8] == 'D' && input[9]=='5' && input[10] == '2' && input[11] == 'D' )
+    input[4] == 'F' && input [5]=='2' && input[6] == '6' && input[7] == 'F' &&
+    input[8] == '6' && input[9]=='9' && input[10] == 'D' && input[11] == '3' )
     {
   
 
@@ -175,6 +190,7 @@ if ( Serial.available ( ) )
        lcd.print ( " THANKS FOR " ) ;
        lcd.setCursor ( 0 , 1 );
        lcd.print ( " VISITING " ) ;
+       
     }
    }
     }
